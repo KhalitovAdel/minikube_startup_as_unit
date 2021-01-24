@@ -1,0 +1,13 @@
+[Unit]
+Description=Runs minikube on startup
+After=vboxautostart-service.service vboxballoonctrl-service.service vboxdrv.service vboxweb-service.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/bin/minikube start --kubernetes-version v1.17.0
+User=username
+Group=usergroup
+
+[Install]
+WantedBy=multi-user.target
